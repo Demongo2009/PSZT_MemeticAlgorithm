@@ -36,6 +36,14 @@ public:
 	std::vector<float> getValuesArray(){
 		return valuesArray;
 	}
+
+	void changeValue(int num, float change, bool add){
+	    if(add){
+            this->valuesArray[num] += change;
+	    }
+	    else
+	        this->valuesArray[num] -= change;
+	}
 };
 
 class SpecimenComparison{
@@ -92,6 +100,10 @@ class MemeticAlgorithm{
 	float rangeOfValue;
 	int floatPrecision;
 	int numberOfGenerations;
+
+	float mutationProbability;
+	float mutationStrength;
+
 	EvaluationFunction evaluationFunction;
 
 
@@ -134,14 +146,51 @@ class MemeticAlgorithm{
 
 	}
 
+
+	void mutatePopulation(Population population){
+	    for(int i=0; i<populationSize; i++){
+	        Specimen specimen = population.popSpecimen();
+
+	        std::vector<float> valuesArray = specimen.getValuesArray();
+
+	        for(int j=0; j<specimenSize; j++){
+	            float mutationThreshold = (float)rand() / RAND_MAX;
+
+	            if(mutationThreshold <= mutationProbability){
+	                float value = valuesArray[j];
+
+	                if(value + mutationStrength <= maxValue){
+	                    specimen.changeValue(j, mutationStrength, true);
+	                }
+	                else
+	                    specimen.changeValue(j, mutationStrength, false);
+	            }
+	        }
+	    }
+	}
+
+	Population tournamentSelection(Population population){
+	    std::vector<Specimen> vectorOfWinners;  // vector for the tournament winners
+
+	    for(int i=0; i<populationSize; i++){
+	        // choose 2 random specimens (how to do it?)
+	        // choose the winner (using some kind of probability or not)
+	        // copy the winner to the vectorOfWinners
+	    }
+        Population nextGeneration = Population(vectorOfWinners);    // create new population using vector of winners
+	    return nextGeneration;
+	}
+
 public:
 
 	MemeticAlgorithm(int seed, int populationSize, int specimenSize,
-			float minValue, float maxValue, int precision, int numberOfGenerations, EvaluationFunction evaluationFunction):
+			float minValue, float maxValue, int precision, int numberOfGenerations, float mutationProbability,
+			float mutationStrength, EvaluationFunction evaluationFunction):
 			seed(seed),
 			populationSize(populationSize), specimenSize(specimenSize),
 			minValue(minValue), maxValue(maxValue), floatPrecision(precision),
-			numberOfGenerations(numberOfGenerations),evaluationFunction(evaluationFunction){
+			numberOfGenerations(numberOfGenerations),mutationProbability(mutationProbability),
+			mutationStrength(mutationStrength),evaluationFunction(evaluationFunction){
 		srand(seed);
 		this->rangeOfValue = maxValue - minValue;
 		if(rangeOfValue<=0) {
@@ -160,9 +209,11 @@ public:
 			// evaluate
 			evaluatePopulation(population);
 
-			// evolve
+			// evolve (mutate only)
+			mutatePopulation(population);
 
-			// select
+			// select (tournament selection)
+			population = tournamentSelection(population);
 
 			// local memetics
 

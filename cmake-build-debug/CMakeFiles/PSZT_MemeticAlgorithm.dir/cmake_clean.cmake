@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o"
+  "CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o"
   "PSZT_MemeticAlgorithm"
   "PSZT_MemeticAlgorithm.pdb"
 )
