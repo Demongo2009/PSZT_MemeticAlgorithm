@@ -1,4 +1,4 @@
-/snap/clion/129/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/areckt/CLionProjects/PSZT_MemeticAlgorithm
+/home/demongo/Clion/clion-2019.1.2/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/areckt/CLionProjects/PSZT_MemeticAlgorithm/cmake-build-debug
+-- Build files have been written to: /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug

@@ -4,4 +4,4 @@ project(PSZT_MemeticAlgorithm)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(PSZT_MemeticAlgorithm
-        src/main.cpp )
+        src/main.cpp src/memetic.cpp src/population.cpp src/specimen.cpp)
