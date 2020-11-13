@@ -62,16 +62,24 @@ void MemeticAlgorithm::mutatePopulation(Population& population){
 		std::vector<float> valuesArray = specimen.getValuesArray();
 
 		for(int j=0; j<specimenSize; j++){
-			float mutationThreshold = (float)rand() / RAND_MAX;
+			float mutationPerimeter = (float)rand() / RAND_MAX;
 
-			if(mutationThreshold <= mutationProbability){
+			if(mutationPerimeter <= mutationProbability){
 				float value = valuesArray.at(j);
 
-				if(value + mutationStrength <= maxValue){
-					specimen.changeValue(j, mutationStrength, true);
+				if(mutationPerimeter <= mutationProbability/2){
+				    if(value + mutationStrength <= maxValue)
+				        specimen.changeValue(j, mutationStrength, true);
+				    else
+				        specimen.changeValue(j, mutationStrength, false);
 				}
-				else
-					specimen.changeValue(j, mutationStrength, false);
+				else{
+				    if(value - mutationStrength >= minValue)
+				        specimen.changeValue(j, mutationStrength, false);
+				    else
+				        specimen.changeValue(j, mutationStrength, true);
+				}
+
 			}
 		}
 	}
@@ -165,3 +173,20 @@ void MemeticAlgorithm::run() {
 //			// local evolve?
 //
 //		}
+
+/*
+ * I would suggest such an order:
+ *
+ * 0.1  generate an initial population
+ * 0.2  evaluate
+ *
+ * for(int i=0; i < numberOfGenerations; i++)
+ * {
+ *      1.  evolve (mutate)
+ *      2.  evaluate
+ *      3.  local memetics (with built in evaluating - updating fitness values)
+ *      4.  tournament selection - it seems logical to do it at the end of the loop
+ *          because by selection we get next generation
+ * }
+ *
+ */
