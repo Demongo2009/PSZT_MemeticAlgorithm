@@ -13,7 +13,7 @@ int main(){
 	std::cout<< "hello world\n";
 
 
-	memeticAlgorithm();
+	MemeticAlgorithm memeticAlgorithm = MemeticAlgorithm(0,0,0,0,0,0,0,0);
 
 
 	return 0;
