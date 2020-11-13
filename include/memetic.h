@@ -34,47 +34,68 @@ public:
 		return fitness;
 	}
 
-	std::vector<float> getValuesArray(){
+	std::vector<float>& getValuesArray(){
 		return valuesArray;
 	}
-};
 
-class SpecimenComparison{
-	bool reverse;
-public:
-	SpecimenComparison(const bool& revparam=false)
-	{reverse=revparam;}
-	bool operator() (const Specimen& lhs, const Specimen&rhs) const
-	{
-		if (reverse) return (lhs.getFitness() > rhs.getFitness());
-		else return (lhs.getFitness() < rhs.getFitness());
+	void changeValue(int num, float change, bool add){
+	    if(add){
+            this->valuesArray.at(num) += change;
+	    }
+	    else
+	        this->valuesArray.at(num) -= change;
 	}
 };
 
-typedef std::priority_queue<Specimen,std::vector<Specimen>, SpecimenComparison> SpecimenQueue;
+//class SpecimenComparison{
+//	bool reverse;
+//public:
+//	SpecimenComparison(const bool& revparam=false)
+//	{reverse=revparam;}
+//	bool operator() (const Specimen& lhs, const Specimen&rhs) const
+//	{
+//		if (reverse) return (lhs.getFitness() > rhs.getFitness());
+//		else return (lhs.getFitness() < rhs.getFitness());
+//	}
+//};
+
+//typedef std::priority_queue<Specimen,std::vector<Specimen>, SpecimenComparison> SpecimenQueue;
 
 class Population{
 	int populationSize;
 
-	SpecimenQueue specimenQueue;
+//	SpecimenQueue specimenQueue;  changed to std::vector<Specimen> specimenArray;
+	std::vector<Specimen> specimenArray;
 
 public:
 	Population(std::vector<Specimen> vectorOfSpecimen):
 	populationSize(vectorOfSpecimen.size())
 	{
 		for(auto s: vectorOfSpecimen){
-			specimenQueue.push(s);
+			specimenArray.push_back(s);
 		}
 	}
 
-	void setSpecimenQueue(SpecimenQueue specimenQueue){
-		this->specimenQueue = specimenQueue;
+	void setSpecimenArray(std::vector<Specimen> specimenArray){
+		this->specimenArray = specimenArray;
 	}
 
-	Specimen popSpecimen(){
-		Specimen s = specimenQueue.top();
-		specimenQueue.pop();
-		return s;
+//	Specimen popSpecimen(){
+//		Specimen s = *specimenArray.begin();
+//		specimenArray.erase(specimenArray.begin());
+//		return s;
+//	}
+
+	Specimen& getSpecimen(int index){
+	    return specimenArray.at(index);
+	}
+
+	void setSpecimen(int index, Specimen specimen){
+		if(index >= populationSize){
+			std::cout << index << " - index out of range\n";
+		}
+
+		specimenArray[index] = specimen;
 	}
 
 };
@@ -93,6 +114,10 @@ class MemeticAlgorithm{
 	float rangeOfValue;
 	int floatPrecision;
 	int numberOfGenerations;
+
+	float mutationProbability;
+	float mutationStrength;
+
 	EvaluationFunction evaluationFunction;
 
 
@@ -123,11 +148,10 @@ class MemeticAlgorithm{
 
 
 
-	void evaluatePopulation(Population population){
-		SpecimenQueue specimenQueue;
+	void evaluatePopulation(Population& population){
 
 		for(int i=0; i<populationSize; i++){
-			Specimen specimen = population.popSpecimen();
+			Specimen specimen = population.getSpecimen(i);
 
 			float fitness = evaluationFunction(specimen.getValuesArray());
 			specimen.setFitness(fitness);
@@ -135,14 +159,90 @@ class MemeticAlgorithm{
 
 	}
 
+
+	void mutatePopulation(Population& population){
+	    for(int i=0; i<populationSize; i++){
+	        Specimen specimen = population.getSpecimen(i);
+
+	        std::vector<float> valuesArray = specimen.getValuesArray();
+
+	        for(int j=0; j<specimenSize; j++){
+	            float mutationThreshold = (float)rand() / RAND_MAX;
+
+	            if(mutationThreshold <= mutationProbability){
+	                float value = valuesArray.at(j);
+
+	                if(value + mutationStrength <= maxValue){
+	                    specimen.changeValue(j, mutationStrength, true);
+	                }
+	                else
+	                    specimen.changeValue(j, mutationStrength, false);
+	            }
+	        }
+	    }
+	}
+
+
+	Population tournamentSelection(Population population){
+	    std::vector<Specimen> vectorOfWinners;  // vector for the tournament winners
+	    int firstIndex, secondIndex;
+
+	    for(int i=0; i<populationSize; i++){
+	        // choose 2 random specimens
+	        firstIndex = rand() % populationSize;
+	        secondIndex = rand() % populationSize;
+
+            // choose the winner by comparing the fitness value
+            // copy the winner to the vectorOfWinners
+	        if(population.getSpecimen(firstIndex).getFitness() > population.getSpecimen(secondIndex).getFitness())
+	            vectorOfWinners.push_back(population.getSpecimen(firstIndex));
+	        else
+	            vectorOfWinners.push_back(population.getSpecimen(secondIndex));
+	    }
+
+        Population nextGeneration = Population(vectorOfWinners);    // create new population using vector of winners
+	    return nextGeneration;
+	}
+
+
+	Population localSearch(Population population){
+		for(int i=0; i<populationSize; i++){
+			Specimen specimen = population.getSpecimen(i);
+			Specimen copy = specimen;
+
+
+			for(int j=0; j<specimenSize; j++){
+				float addDeleteThreshold = (float)rand() / RAND_MAX;
+
+
+				if( addDeleteThreshold <= (float)1/2 ) {
+					copy.changeValue(j, mutationStrength, true);
+				}else{
+					copy.changeValue(j, mutationStrength, false);
+				}
+			}
+
+			float copyFittnes = evaluationFunction(copy.getValuesArray());
+
+			if(copyFittnes > specimen.getFitness()){
+				population.setSpecimen(i, copy);
+			}
+		}
+
+		return population;
+	}
+
+
 public:
 
 	MemeticAlgorithm(int seed, int populationSize, int specimenSize,
-			float minValue, float maxValue, int precision, int numberOfGenerations, EvaluationFunction evaluationFunction):
+			float minValue, float maxValue, int precision, int numberOfGenerations, float mutationProbability,
+			float mutationStrength, EvaluationFunction evaluationFunction):
 			seed(seed),
 			populationSize(populationSize), specimenSize(specimenSize),
 			minValue(minValue), maxValue(maxValue), floatPrecision(precision),
-			numberOfGenerations(numberOfGenerations),evaluationFunction(evaluationFunction){
+			numberOfGenerations(numberOfGenerations),mutationProbability(mutationProbability),
+			mutationStrength(mutationStrength),evaluationFunction(evaluationFunction){
 		srand(seed);
 		this->rangeOfValue = maxValue - minValue;
 		if(rangeOfValue<=0) {
@@ -161,16 +261,21 @@ public:
 			// evaluate
 			evaluatePopulation(population);
 
-			// evolve
+			// evolve (mutate only)
+			mutatePopulation(population);
 
-			// select
+			// select (tournament selection)
+			population = tournamentSelection(population);
 
 			// local memetics
-
+			population = localSearch(population);
 
 		}
 
 
+
+//		//Is that more accurate approach?
+//
 //		// generate an initial population
 //		Population population = generatePopulation();
 //		// evaluate
@@ -192,10 +297,5 @@ public:
 };
 
 
-//void memeticAlgorithm(int seed, int populationSize){
-//
-//
-//
-//}
 
 #endif //PSZT_MEMETICALGORITHM_MEMETIC_H

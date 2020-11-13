@@ -1,4 +1,4 @@
-# Install script for directory: /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm
+# Install script for directory: /home/areckt/CLionProjects/PSZT_MemeticAlgorithm
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/areckt/CLionProjects/PSZT_MemeticAlgorithm/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

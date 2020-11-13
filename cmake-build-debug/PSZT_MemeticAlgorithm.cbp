@@ -11,10 +11,10 @@
 				<Option working_dir="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j8 -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j8 -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j8 -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
@@ -84,7 +84,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp">
+		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/main.cpp">
 			<Option target="PSZT_MemeticAlgorithm"/>
 		</Unit>
 		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/CMakeLists.txt">
