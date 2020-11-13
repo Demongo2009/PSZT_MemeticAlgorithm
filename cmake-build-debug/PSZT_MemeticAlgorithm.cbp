@@ -84,7 +84,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/main.cpp">
+		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp">
 			<Option target="PSZT_MemeticAlgorithm"/>
 		</Unit>
 		<Unit filename="/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/CMakeLists.txt">
