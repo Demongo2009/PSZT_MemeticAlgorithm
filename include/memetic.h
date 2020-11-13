@@ -8,6 +8,7 @@
 #include <vector>
 #include <queue>
 #include <functional>
+#include <iostream>
 
 class Specimen{
 	int specimenSize;

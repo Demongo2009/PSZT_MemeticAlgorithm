@@ -57,27 +57,27 @@ include CMakeFiles/PSZT_MemeticAlgorithm.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/PSZT_MemeticAlgorithm.dir/flags.make
 
-CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o: CMakeFiles/PSZT_MemeticAlgorithm.dir/flags.make
-CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o -c /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/main.cpp
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: CMakeFiles/PSZT_MemeticAlgorithm.dir/flags.make
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o -c /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp
 
-CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/main.cpp > CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.i
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp > CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.i
 
-CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/main.cpp -o CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.s
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp -o CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.s
 
 # Object files for target PSZT_MemeticAlgorithm
 PSZT_MemeticAlgorithm_OBJECTS = \
-"CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o"
+"CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o"
 
 # External object files for target PSZT_MemeticAlgorithm
 PSZT_MemeticAlgorithm_EXTERNAL_OBJECTS =
 
-PSZT_MemeticAlgorithm: CMakeFiles/PSZT_MemeticAlgorithm.dir/main.cpp.o
+PSZT_MemeticAlgorithm: CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o
 PSZT_MemeticAlgorithm: CMakeFiles/PSZT_MemeticAlgorithm.dir/build.make
 PSZT_MemeticAlgorithm: CMakeFiles/PSZT_MemeticAlgorithm.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable PSZT_MemeticAlgorithm"
