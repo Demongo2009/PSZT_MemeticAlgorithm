@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/src/main.cpp" "/home/demongo/EITI/PSZT/proj1/PSZT_MemeticAlgorithm/cmake-build-debug/CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o"
+  "/home/areckt/CLionProjects/PSZT_MemeticAlgorithm/src/main.cpp" "/home/areckt/CLionProjects/PSZT_MemeticAlgorithm/cmake-build-debug/CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
