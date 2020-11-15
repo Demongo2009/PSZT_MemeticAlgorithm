@@ -7,14 +7,6 @@
 
 
 
-//	Specimen popSpecimen(){
-//		Specimen s = *specimenArray.begin();
-//		specimenArray.erase(specimenArray.begin());
-//		return s;
-//	}
-
-
-
 
 Specimen MemeticAlgorithm::generateSpecimen(){
 	std::vector<float> valuesVector;
@@ -125,9 +117,9 @@ Population MemeticAlgorithm::localSearch(Population population){
 			}
 		}
 
-		float copyFittnes = evaluationFunction(copy.getValuesArray());
+		float copyFitness = evaluationFunction(copy.getValuesArray());
 
-		if(copyFittnes > specimen.getFitness()){
+		if(copyFitness > specimen.getFitness()){
 			population.setSpecimen(i, copy);
 		}
 	}
