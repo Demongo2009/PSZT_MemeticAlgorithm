@@ -10,6 +10,29 @@
 * W etapie ewolucji dokonywana jest tylko mutacja (bez krzyżowania)
 * Wykorzystuje się selekcję turniejową, w której zawsze wygrywa lepszy osobnik
 * Każda generacja jest tak samo liczna
+## Zarys algorytmu
+```c++
+void MemeticAlgorithm::run() {
+
+	// generate an initial population
+	Population population = generatePopulation();
+
+	for (int i = 0; i < numberOfGenerations; i++) {
+		// evaluate
+		evaluatePopulation(population);
+
+		// evolve (mutate only)
+		mutatePopulation(population);
+
+		// select (tournament selection)
+		population = tournamentSelection(population);
+
+		// local memetics
+		population = localSearch(population);
+
+	}
+}
+```
 ## Wkład poszczególnych autorów
 ### Jakub Gałat
 * szkielet programu, klasy i najważniejsze metody
