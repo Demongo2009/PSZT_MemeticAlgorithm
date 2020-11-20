@@ -18,6 +18,8 @@ typedef std::function<float(std::vector<float>)> EvaluationFunction;
 
 class MemeticAlgorithm{
 	// algorithm parameters
+	std::mt19937 gen;
+
 	int seed;
 	int populationSize;
 	int specimenSize;
@@ -62,7 +64,7 @@ public:
 			minValue(minValue), maxValue(maxValue), floatPrecision(precision),
 			numberOfGenerations(numberOfGenerations),mutationProbability(mutationProbability),
 			mutationStrength(mutationStrength),evaluationFunction(evaluationFunction){
-		srand(seed);
+		gen.seed(seed);
 		this->rangeOfValue = maxValue - minValue;
 		if(rangeOfValue<=0) {
 			std::cout << "max is not larger than min\n";

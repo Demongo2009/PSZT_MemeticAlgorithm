@@ -10,10 +10,11 @@
 
 Specimen MemeticAlgorithm::generateSpecimen(){
 	std::vector<float> valuesVector;
+	std::uniform_real_distribution<> dis(minValue, maxValue);
 
 	for(int i=0; i<specimenSize ; i++){
-		int randomInt = rand() % ( (int)rangeOfValue * 10^(floatPrecision) );
-		valuesVector.push_back( (float)randomInt / (float)( 10^(floatPrecision) ) );
+
+		valuesVector.push_back( dis(gen) );
 	}
 
 	return Specimen(valuesVector);
@@ -49,8 +50,6 @@ void MemeticAlgorithm::evaluatePopulation(Population& population){
 
 void MemeticAlgorithm::mutatePopulation(Population& population){
 
-    std::random_device rd;
-    std::mt19937 gen(rd());
     std::uniform_real_distribution<> uniDist(0, 1);
     std::normal_distribution<> normalDist(0, mutationStrength);
 
@@ -78,8 +77,7 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 	std::vector<Specimen> vectorOfWinners;  // vector for the tournament winners
 	int firstIndex, secondIndex;
 
-	std::random_device rd;
-	std::mt19937 gen(rd());
+
 	std::uniform_int_distribution<> intDist (0, populationSize-1);
 
 	for(int i=0; i<populationSize; i++){
@@ -101,13 +99,15 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 
 
 Population MemeticAlgorithm::localSearch(Population population){
+	std::uniform_real_distribution<> dis(0, 1);
+
 	for(int i=0; i<populationSize; i++){
 		Specimen specimen = population.getSpecimen(i);
 		Specimen copy = specimen;
 
 
 		for(int j=0; j<specimenSize; j++){
-			float addDeleteThreshold = (float)rand() / RAND_MAX;
+			float addDeleteThreshold = dis(gen);
 
 
 			if( addDeleteThreshold <= (float)1/2 ) {
