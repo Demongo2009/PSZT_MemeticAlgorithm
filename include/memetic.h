@@ -9,6 +9,7 @@
 #include <queue>
 #include <functional>
 #include <iostream>
+#include <random>
 #include "specimen.h"
 #include "population.h"
 

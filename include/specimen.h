@@ -29,7 +29,8 @@ public:
 
 	std::vector<float>& getValuesArray();
 
-	void changeValue(int num, float change, bool add);
+	void changeValue(int num, float change, bool add); // probably a method to remove
+	void setValuesArray(std::vector<float> values);
 };
 
 

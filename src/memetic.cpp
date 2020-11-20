@@ -48,32 +48,28 @@ void MemeticAlgorithm::evaluatePopulation(Population& population){
 
 
 void MemeticAlgorithm::mutatePopulation(Population& population){
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> uniDist(0, 1);
+    std::normal_distribution<> normalDist(0, mutationStrength);
+
 	for(int i=0; i<populationSize; i++){
-		Specimen specimen = population.getSpecimen(i);
 
-		std::vector<float> valuesArray = specimen.getValuesArray();
+	    if(uniDist(gen) < mutationProbability){
+            Specimen specimen = population.getSpecimen(i);
+            std::vector<float> valuesArray = specimen.getValuesArray();
 
-		for(int j=0; j<specimenSize; j++){
-			float mutationPerimeter = (float)rand() / RAND_MAX;
+            for(int j=0; j<specimenSize; j++){
+                float new_value = valuesArray.at(j) + normalDist(gen);
 
-			if(mutationPerimeter <= mutationProbability){
-				float value = valuesArray.at(j);
+                if(new_value > maxValue) new_value = maxValue;
+                else if(new_value < minValue) new_value = minValue;
 
-				if(mutationPerimeter <= mutationProbability/2){
-				    if(value + mutationStrength <= maxValue)
-				        specimen.changeValue(j, mutationStrength, true);
-				    else
-				        specimen.changeValue(j, mutationStrength, false);
-				}
-				else{
-				    if(value - mutationStrength >= minValue)
-				        specimen.changeValue(j, mutationStrength, false);
-				    else
-				        specimen.changeValue(j, mutationStrength, true);
-				}
-
-			}
-		}
+                valuesArray.at(j) = new_value;
+            }
+            specimen.setValuesArray(valuesArray);
+        }
 	}
 }
 
@@ -82,10 +78,14 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 	std::vector<Specimen> vectorOfWinners;  // vector for the tournament winners
 	int firstIndex, secondIndex;
 
+	std::random_device rd;
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> intDist (0, populationSize-1);
+
 	for(int i=0; i<populationSize; i++){
 		// choose 2 random specimens
-		firstIndex = rand() % populationSize;
-		secondIndex = rand() % populationSize;
+		firstIndex = intDist(gen);
+		secondIndex = intDist(gen);
 
 		// choose the winner by comparing the fitness value
 		// copy the winner to the vectorOfWinners
