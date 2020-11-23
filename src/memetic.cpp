@@ -87,7 +87,7 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 
 		// choose the winner by comparing the fitness value
 		// copy the winner to the vectorOfWinners
-		if(population.getSpecimen(firstIndex).getFitness() > population.getSpecimen(secondIndex).getFitness())
+		if(population.getSpecimen(firstIndex).getFitness() < population.getSpecimen(secondIndex).getFitness())
 			vectorOfWinners.push_back(population.getSpecimen(firstIndex));
 		else
 			vectorOfWinners.push_back(population.getSpecimen(secondIndex));
@@ -98,37 +98,54 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 }
 
 
-Population MemeticAlgorithm::localSearch(Population population){
+
+
+void MemeticAlgorithm::localSearch(Population population){
 	std::uniform_real_distribution<> dis(0, 1);
+	Eigen::Matrix<float, Eigen::Dynamic, 1> x;
+	float fx=0;
+	int niter=0;
+
+	LBFGSpp::LBFGSSolver<float> solver(param);
+
 
 	for(int i=0; i<populationSize; i++){
 		Specimen specimen = population.getSpecimen(i);
 		Specimen copy = specimen;
+		x = Eigen::VectorXd(copy.getValuesArray().data());
 
+		float useLocalSearchThreshold = dis(gen);
 
-		for(int j=0; j<specimenSize; j++){
-			float addDeleteThreshold = dis(gen);
+		if( useLocalSearchThreshold <= localSearchProbability ) {
+			// it may come to changing evaluationFunction or splitting it into one for solver and one for fitness because solver requires
+			// signature fun(x, grad)
+			niter = solver.minimize(evaluationFunction, x, fx);
 
+			copy.setFitness(fx);
+			std::vector<float> values(x.data(), x.data() + x.rows() * x.cols());
+			copy.setValuesArray(values);
 
-			if( addDeleteThreshold <= (float)1/2 ) {
-				copy.changeValue(j, mutationStrength, true);
-			}else{
-				copy.changeValue(j, mutationStrength, false);
-			}
+			bestSpecimensFound.push_back(copy);
 		}
 
-		float copyFitness = evaluationFunction(copy.getValuesArray());
-
-		if(copyFitness > specimen.getFitness()){
-			population.setSpecimen(i, copy);
-		}
 	}
 
-	return population;
+	Specimen best;
+	best.setFitness(MAXFLOAT);
+	int size = bestSpecimensFound.size();
+	for(int i=0; i<size; i++){
+		Specimen s = *bestSpecimensFound.begin();
+		if(best.getFitness() > s.getFitness()){
+			best = s;
+		}
+		bestSpecimensFound.erase(bestSpecimensFound.begin());
+	}
+
+	bestSpecimensFound.push_back(best);
 }
 
 
-void MemeticAlgorithm::run() {
+Specimen MemeticAlgorithm::run() {
 
 	// generate an initial population
 	Population population = generatePopulation();
@@ -144,9 +161,19 @@ void MemeticAlgorithm::run() {
 		population = tournamentSelection(population);
 
 		// local memetics
-		population = localSearch(population);
+		localSearch(population);
 
 	}
+
+	Specimen best;
+	best.setFitness(MAXFLOAT);
+	for(auto s: bestSpecimensFound){
+		if(best.getFitness() > s.getFitness()){
+			best = s;
+		}
+	}
+
+	return best;
 }
 //		//Is that more accurate approach?
 //
