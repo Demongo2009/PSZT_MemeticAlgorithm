@@ -5,7 +5,7 @@
 #define BFGS_MAT_H
 
 #include <vector>
-#include <Eigen/Core>
+#include "../../lib/Eigen/Core"
 #include "BKLDLT.h"
 
 

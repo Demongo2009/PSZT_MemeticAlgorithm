@@ -8,6 +8,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+cmake-build-debug/
+
 # Generated files
 .idea/**/contentModel.xml
 

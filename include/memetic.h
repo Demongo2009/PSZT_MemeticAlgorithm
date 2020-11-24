@@ -18,6 +18,7 @@
 
 
 typedef std::function<float(std::vector<float>)> EvaluationFunction;
+typedef std::function<double(Eigen::Matrix<double, Eigen::Dynamic, 1>&, Eigen::Matrix<double, Eigen::Dynamic, 1>&)> LocalSearchFunToMin;
 
 class MemeticAlgorithm{
 	// algorithm parameters
@@ -35,12 +36,13 @@ class MemeticAlgorithm{
 	float mutationStrength;
 
 	EvaluationFunction evaluationFunction;
+	LocalSearchFunToMin fun;
 
 	float localSearchProbability;
 	int localSearchNumOfIterations;
-	float localSearchEpsilon;
+	double localSearchEpsilon;
 
-	LBFGSpp::LBFGSParam<float> param;
+	LBFGSpp::LBFGSParam<double> param;
 	std::vector<Specimen> bestSpecimensFound;
 
 	//---------------------------------------
@@ -67,15 +69,17 @@ class MemeticAlgorithm{
 public:
 
 	MemeticAlgorithm(int seed, int populationSize, int specimenSize,
-			float minValue, float maxValue, int precision, int numberOfGenerations, float mutationProbability,
-			float mutationStrength, float localSearchProbability, int localSearchNumOfIterations, float localSearchEpsilon,
-			EvaluationFunction evaluationFunction):
+			float minValue, float maxValue,
+			int numberOfGenerations, float mutationProbability,
+			float mutationStrength, float localSearchProbability,
+			int localSearchNumOfIterations, double localSearchEpsilon,
+			EvaluationFunction evaluationFunction, LocalSearchFunToMin fun):
 			seed(seed),
 			populationSize(populationSize), specimenSize(specimenSize),
 			minValue(minValue), maxValue(maxValue),
 			numberOfGenerations(numberOfGenerations),mutationProbability(mutationProbability),
 			mutationStrength(mutationStrength),evaluationFunction(evaluationFunction), localSearchProbability(localSearchProbability),
-			localSearchNumOfIterations(localSearchNumOfIterations), localSearchEpsilon(localSearchEpsilon){
+			localSearchNumOfIterations(localSearchNumOfIterations), localSearchEpsilon(localSearchEpsilon), fun(fun){
 
 		gen.seed(seed);
 		param.epsilon = localSearchEpsilon;

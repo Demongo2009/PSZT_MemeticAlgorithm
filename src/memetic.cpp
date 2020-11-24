@@ -102,24 +102,27 @@ Population MemeticAlgorithm::tournamentSelection(Population population){
 
 void MemeticAlgorithm::localSearch(Population population){
 	std::uniform_real_distribution<> dis(0, 1);
-	Eigen::Matrix<float, Eigen::Dynamic, 1> x;
-	float fx=0;
+
+	Eigen::VectorXd x;
+	double fx=0;
 	int niter=0;
 
-	LBFGSpp::LBFGSSolver<float> solver(param);
+	LBFGSpp::LBFGSSolver<double> solver(param);
 
 
 	for(int i=0; i<populationSize; i++){
 		Specimen specimen = population.getSpecimen(i);
 		Specimen copy = specimen;
-		x = Eigen::VectorXd(copy.getValuesArray().data());
+		//copy.getValuesArray().data()
+		x = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(reinterpret_cast<double *>(copy.getValuesArray().data()), specimenSize);
+
 
 		float useLocalSearchThreshold = dis(gen);
 
 		if( useLocalSearchThreshold <= localSearchProbability ) {
 			// it may come to changing evaluationFunction or splitting it into one for solver and one for fitness because solver requires
 			// signature fun(x, grad)
-			niter = solver.minimize(evaluationFunction, x, fx);
+			niter = solver.minimize(fun, x, fx);
 
 			copy.setFitness(fx);
 			std::vector<float> values(x.data(), x.data() + x.rows() * x.cols());

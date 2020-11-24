@@ -4,7 +4,7 @@
 #ifndef LBFGS_H
 #define LBFGS_H
 
-#include <Eigen/Core>
+#include "../lib/Eigen/Core"
 #include "LBFGSpp/Param.h"
 #include "LBFGSpp/BFGSMat.h"
 #include "LBFGSpp/LineSearchBacktracking.h"
