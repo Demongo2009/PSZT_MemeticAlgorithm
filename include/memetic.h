@@ -13,9 +13,10 @@
 #include "specimen.h"
 #include "population.h"
 #include "../lib/Eigen/Core"
-#include "../lib/LBFGS.h"
+#include "../lib/LBFGSB.h"
 
-
+#define CEC_MIN_VALUE -100.0
+#define CEC_MAX_VALUE 100.0
 
 typedef std::function<float(std::vector<float>)> EvaluationFunction;
 typedef std::function<double(Eigen::Matrix<double, Eigen::Dynamic, 1>&, Eigen::Matrix<double, Eigen::Dynamic, 1>&)> LocalSearchFunToMin;
@@ -42,7 +43,7 @@ class MemeticAlgorithm{
 	int localSearchNumOfIterations;
 	double localSearchEpsilon;
 
-	LBFGSpp::LBFGSParam<double> param;
+	LBFGSpp::LBFGSBParam<double> param;
 	std::vector<Specimen> bestSpecimensFound;
 
 	//---------------------------------------

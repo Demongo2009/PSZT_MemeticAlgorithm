@@ -144,13 +144,13 @@ CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/Eigen/src/plugins/Co
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGS.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSB.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/BFGSMat.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/BKLDLT.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/LineSearchBacktracking.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/LineSearchBracketing.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/LineSearchNocedalWright.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/Cauchy.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/LineSearchMoreThuente.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/Param.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../lib/LBFGSpp/SubspaceMin.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/main.cpp.o: ../src/main.cpp
 
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../include/memetic.h
@@ -296,13 +296,13 @@ CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/Eigen/src/plugins
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGS.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSB.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/BFGSMat.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/BKLDLT.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/LineSearchBacktracking.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/LineSearchBracketing.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/LineSearchNocedalWright.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/Cauchy.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/LineSearchMoreThuente.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/Param.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../lib/LBFGSpp/SubspaceMin.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/memetic.cpp.o: ../src/memetic.cpp
 
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../include/memetic.h
@@ -448,13 +448,13 @@ CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/Eigen/src/plug
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGS.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSB.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/BFGSMat.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/BKLDLT.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/LineSearchBacktracking.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/LineSearchBracketing.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/LineSearchNocedalWright.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/Cauchy.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/LineSearchMoreThuente.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/Param.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../lib/LBFGSpp/SubspaceMin.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/population.cpp.o: ../src/population.cpp
 
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../include/memetic.h
@@ -600,12 +600,12 @@ CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/Eigen/src/plugin
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGS.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSB.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/BFGSMat.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/BKLDLT.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/LineSearchBacktracking.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/LineSearchBracketing.h
-CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/LineSearchNocedalWright.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/Cauchy.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/LineSearchMoreThuente.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/Param.h
+CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../lib/LBFGSpp/SubspaceMin.h
 CMakeFiles/PSZT_MemeticAlgorithm.dir/src/specimen.cpp.o: ../src/specimen.cpp
 

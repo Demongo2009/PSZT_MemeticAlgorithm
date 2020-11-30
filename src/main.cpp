@@ -6,10 +6,20 @@
 #include "../include/memetic.h"
 
 
-float eval(std::vector<float> v){
-	float x = v[0];
+float eval(std::vector<float> x){
+	int size = x.size();
 
-	return powf(x-2,2) + 1;
+	double fx=0;
+
+	for(int i=0; i<size; i+=2){
+
+		double t1 = 1.0 - x[i];
+		double t2 = 10 * (x[i + 1] - x[i] * x[i]);
+		fx += t1 * t1 + t2 * t2;
+
+	}
+
+	return fx;
 }
 
 // LBFGS++ lib requires such function signature
@@ -18,10 +28,13 @@ double evalForLocalSearch(Eigen::Matrix<double, Eigen::Dynamic, 1>& x, Eigen::Ma
 
 	double fx=0;
 
-	for(int i=0; i<size; i++){
+	for(int i=0; i<size; i+=2){
 
-		grad[i] = 2 * x[i] - 4;
-		fx += powf(x[i]-2,2) +1 ;
+		double t1 = 1.0 - x[i];
+		double t2 = 10 * (x[i + 1] - x[i] * x[i]);
+		grad[i + 1] = 20 * t2;
+		grad[i]     = -2.0 * (x[i] * grad[i + 1] + t1);
+		fx += t1 * t1 + t2 * t2;
 
 	}
 

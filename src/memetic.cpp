@@ -107,22 +107,24 @@ void MemeticAlgorithm::localSearch(Population population){
 	double fx=0;
 	int niter=0;
 
-	LBFGSpp::LBFGSSolver<double> solver(param);
+	LBFGSpp::LBFGSBSolver<double> solver(param);
+	Eigen::VectorXd lb = Eigen::VectorXd::Constant(specimenSize, (double) CEC_MIN_VALUE);
+	Eigen::VectorXd ub = Eigen::VectorXd::Constant(specimenSize, (double) CEC_MAX_VALUE);
 
 
 	for(int i=0; i<populationSize; i++){
 		Specimen specimen = population.getSpecimen(i);
 		Specimen copy = specimen;
 		//copy.getValuesArray().data()
-		x = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(reinterpret_cast<double *>(copy.getValuesArray().data()), specimenSize);
-
+//		x = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(reinterpret_cast<double *>(copy.getValuesArray().data()), specimenSize);
+		x = Eigen::VectorXd::MapAligned(reinterpret_cast<const double *>(copy.getValuesArray().data()), specimenSize);
 
 		float useLocalSearchThreshold = dis(gen);
 
 		if( useLocalSearchThreshold <= localSearchProbability ) {
 			// it may come to changing evaluationFunction or splitting it into one for solver and one for fitness because solver requires
 			// signature fun(x, grad)
-			niter = solver.minimize(fun, x, fx);
+			niter = solver.minimize(fun, x, fx, lb, ub);
 
 			copy.setFitness(fx);
 			std::vector<float> values(x.data(), x.data() + x.rows() * x.cols());
