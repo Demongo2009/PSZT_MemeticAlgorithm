@@ -46,10 +46,14 @@ int main(){
 	std::cout<< "hello world\n";
 
 
-	MemeticAlgorithm memeticAlgorithm = MemeticAlgorithm(1,100,1,-100,100,100,0.1,0.5,0.1,10,1e-6,eval,evalForLocalSearch);
+	MemeticAlgorithm memeticAlgorithm = MemeticAlgorithm(1,100,2,-100,100,100,0.1,0.5,0.1,10,1e-6,eval,evalForLocalSearch);
 	Specimen specimen = memeticAlgorithm.run();
 
-	std::cout << "Best: " << *specimen.getValuesArray().begin() << " Value: " << specimen.getFitness() << "\n";
+	std::cout << "Best: " << "\n";
+	for(auto i : specimen.getValuesArray()){
+	    std::cout << i << "\t";
+	}
+	std::cout << "\nValue: " << specimen.getFitness() << "\n";
 
 	return 0;
 }
