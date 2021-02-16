@@ -1,16 +1,16 @@
-# Projekt z przedmiotu Podstawy Sztucznej Inteligencji
-## Autorzy
+# Basics of Artificial Inteligence Science Project
+## Authors
 ### Jakub Gałat, Arkadiusz Dawid
-## Treść zadania
-### Implementacja algorytmu memetycznego, tzn. algorytmu ewolucyjnego, który wykorzystuje optymizator lokalny.
-## Założenia
-* Każdy osobnik jest opisany przez wektor cech oraz wyliczoną dla nich wartość fitness
-* Cechy osobników są liczbami rzeczywistymi
-* Wartość każdej cechy jest ograniczona z góry i z dołu, przy czym każda cecha ma takie same ograniczenia
-* W etapie ewolucji dokonywana jest tylko mutacja (bez krzyżowania)
-* Wykorzystuje się selekcję turniejową, w której zawsze wygrywa lepszy osobnik
-* Każda generacja jest tak samo liczna
-## Zarys algorytmu
+## Topic
+### Implementation of memetic algorithm, i.e. evolutionary algorithm, which uses local optymalization.
+## Design choices
+* Each specimen is described by vector of his features and his fitnes value
+* Specimen features are floats
+* Value of each feature is constrained in bounds (-100,100) and every feature has same constraints
+* In the proces of evolution we use only mutation (without crossover)
+* As a selection we use tournament selection, where best specimen always wins
+* Each generation has same population size
+## Algoritm
 ```c++
 void MemeticAlgorithm::run() {
 
@@ -33,11 +33,11 @@ void MemeticAlgorithm::run() {
 	}
 }
 ```
-## Wkład poszczególnych autorów
+## Contribution
 ### Jakub Gałat
-* szkielet programu, klasy i najważniejsze metody
-* obliczanie współczynnika fitness
-* optymizator lokalny
+* core program features, classes and important methods
+* fitness evaluation
+* local optimalization
 ### Arkadiusz Dawid
-* ewolucja (mutacja osobników)
-* selekcja turniejowa
+* evolution (specimen mutation)
+* tournament selection
